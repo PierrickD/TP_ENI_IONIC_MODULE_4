@@ -7,6 +7,22 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  pseudo = "";
+  difficulte = "easy";
+  sauvegarder = false;
+  error = "";
+  beginGame = false;
+  nextQuestion = false;
 
+  commencer() {
+  console.log(this.pseudo, this.difficulte, this.sauvegarder);
+  if (this.pseudo === "" || this.difficulte === "") {
+    this.error = "Veuillez rentrer un pseudo et une difficulté";
+    return;
+    }
+    this.beginGame = true;
+  }
+  reponse(reponse: string) {
+  this.nextQuestion = true;
+  }
 }

@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Open Trivia
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,38 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Open Trivia</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    
+    <label for="pseudo">Votre pseudo</label>
+    <input type="text" name="pseudo" [(ngModel)]="pseudo">
+    <label>Difficulté</label>
+    <select [(ngModel)]="difficulte">
+      <option value="easy">Facile</option>
+      <option value="medium">Moyen</option>
+      <option value="hard">Hard</option>
+    </select>
+    
+    <input type="checkbox" id="scales" name="scales" [(ngModel)]="sauvegarder">
+    <label for="scales">Sauvegarder mes informations</label>
+    
+    <p *ngIf="error && error.length > 0" class="error">{{ error }}</p>
+    <button (click)="commencer()">Commencer</button>
+    <div *ngIf="beginGame">
+      <p> Bienvenue {{ pseudo }}</p>
+      <h3>De quelle couleur est le cheval blanc d'henri IV ?</h3>
+      <div>
+      <button (click)="reponse('A')">Réponse A</button>
+      <button (click)="reponse('B')">Réponse B</button>
+      <button (click)="reponse('C')">Réponse C</button>
+      <button (click)="reponse('D')">Réponse D</button>
+      </div>
+      <button *ngIf="nextQuestion">Question suivante</button>
+    
+      
+    </form>
   </div>
 </ion-content>
