@@ -14,33 +14,36 @@
   </ion-header>
 
   <div id="container">
-    
-    <label for="pseudo">Votre pseudo</label>
-    <input type="text" name="pseudo" [(ngModel)]="pseudo">
-    <label>Difficulté</label>
-    <select [(ngModel)]="difficulte">
-      <option value="easy">Facile</option>
-      <option value="medium">Moyen</option>
-      <option value="hard">Hard</option>
-    </select>
-    
-    <input type="checkbox" id="scales" name="scales" [(ngModel)]="sauvegarder">
-    <label for="scales">Sauvegarder mes informations</label>
+    <form>
+      <label for="pseudo">Votre pseudo : </label>
+      <input type="text" name="pseudo" [(ngModel)]="pseudo">
+      <br>
+      <label>Difficulté : </label>
+      <select [(ngModel)]="difficulte">
+        <option value="easy">Facile</option>
+        <option value="medium">Moyen</option>
+        <option value="hard">Hard</option>
+      </select>
+      <br>
+      <input type="checkbox" id="scales" name="scales" [(ngModel)]="sauvegarder">
+      <label for="scales">Sauvegarder mes informations</label>
+    </form>
     
     <p *ngIf="error && error.length > 0" class="error">{{ error }}</p>
     <button (click)="commencer()">Commencer</button>
+
     <div *ngIf="beginGame">
       <p> Bienvenue {{ pseudo }}</p>
       <h3>De quelle couleur est le cheval blanc d'henri IV ?</h3>
       <div>
-      <button (click)="reponse('A')">Réponse A</button>
-      <button (click)="reponse('B')">Réponse B</button>
-      <button (click)="reponse('C')">Réponse C</button>
-      <button (click)="reponse('D')">Réponse D</button>
+        <button (click)="reponse('A')">Réponse A</button>
+        <button (click)="reponse('B')">Réponse B</button>
+        <button (click)="reponse('C')">Réponse C</button>
+        <button (click)="reponse('D')">Réponse D</button>
       </div>
       <button *ngIf="nextQuestion">Question suivante</button>
+    </div>
+   
     
-      
-    </form>
   </div>
 </ion-content>
